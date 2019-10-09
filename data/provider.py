@@ -130,16 +130,21 @@ class TargetDomainData:
 
         label_ = tf.cast(label, tf.float32)
 
-        # img = tf.read_file(filename)
-        img = tf.io.read_file(filename)
-        img = tf.image.decode_jpeg(img, channels=3)
-        img = tf.image.convert_image_dtype(img, dtype=tf.float32)
+        try:
+            # img = tf.read_file(filename)
+            img = tf.io.read_file(filename)
+            img = tf.image.decode_jpeg(img, channels=3)
+            img = tf.image.convert_image_dtype(img, dtype=tf.float32)
 
-        if self.is_train:
-            img = self.augment_dataset(img, self.image_size)
+            if self.is_train:
+                img = self.augment_dataset(img, self.image_size)
 
-        # Subtract off the mean and divide by the variance of the pixels.
-        img = tf.image.per_image_standardization(img)
+            # Subtract off the mean and divide by the variance of the pixels.
+            img = tf.image.per_image_standardization(img)
+
+        except:
+            print(filename)
+            raise ValueError
 
         return img, label_
 
