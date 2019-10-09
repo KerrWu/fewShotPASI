@@ -1,3 +1,4 @@
+import os
 import tensorflow as tf
 
 
@@ -74,18 +75,22 @@ class TargetDomainData:
         for line in open(self.txt_file, 'r'):
             try:
                 items = line.split(',')
-                self.img_paths.append(items[0])
+                if self.data_root_dir:
+                    self.img_paths.append(os.path.join(self.data_root_dir, items[0]))
+                else:
+                    self.img_paths.append(items[0])
                 self.labels.append([float(elem) for elem in items[1:]])
             except:
                 print(line)
                 raise ValueError
 
-    def __init__(self, txt_file, batch_size, image_size, buffer_scale=10, is_train=True):
+    def __init__(self, txt_file, batch_size, image_size, buffer_scale=10, is_train=True, data_root_dir=None):
 
         self.txt_file = txt_file
         self.batch_size = batch_size
         self.image_size = image_size
         self.is_train = is_train
+        self.data_root_dir = data_root_dir
         buffer_size = batch_size * buffer_scale
 
         # 读取图片
