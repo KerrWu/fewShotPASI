@@ -1,0 +1,11 @@
+{
+  "train_txt_file": "./train_patient.txt",
+  "valid_txt_file": "./valid_patient.txt",
+  "root_dir":"...",
+  "batch_size": 32,
+  "image_size": 224,
+  "buffer_scale": 10,
+  "pretrain_weights": false,
+  "save_dir": "./checkpoint/baseline_resnet50",
+  "epochs": 100
+}
