@@ -123,7 +123,7 @@ class TargetDomainData:
 
     def parse_function(self, filename, label):
 
-        # label_ = tf.to_float(label)
+        label_ = tf.cast(label, tf.float32)
 
         # img = tf.read_file(filename)
         img = tf.io.read_file(filename)
