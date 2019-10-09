@@ -13,7 +13,7 @@ def lr_scheduler(epoch):
     else:
         return 0.001 * tf.math.exp(0.1 * (10 - epoch))
 
-cfg_path = "./config/baseline_resnet50.json"
+cfg_path = "./configs/baseline_resnet50.json"
 cfg = parse.process_config(cfg_path)
 
 begin_time = time.time()
