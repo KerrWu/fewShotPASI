@@ -11,11 +11,11 @@ class baseline_backbone(K.Model):
     def call(self, inputs, name="resnet50", training=False):
 
         if name=="resnet50":
-            feature = K.applications.ResNet50(input_tensoe=inputs, weights='imagenet', include_top=False).output
+            feature = K.applications.ResNet50(input_tensor=inputs, weights='imagenet', include_top=False).output
         elif name=="dense101":
-            feature = K.applications.DenseNet121(input_tensoe=inputs, weights='imagenet', include_top=False).output
+            feature = K.applications.DenseNet121(input_tensor=inputs, weights='imagenet', include_top=False).output
         elif name=="xception":
-            feature = K.applications.Xception(input_tensoe=inputs, weights='imagenet', include_top=False).output
+            feature = K.applications.Xception(input_tensor=inputs, weights='imagenet', include_top=False).output
         else:
             raise NotImplementedError
 

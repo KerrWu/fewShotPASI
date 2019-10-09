@@ -5,7 +5,7 @@
   "data_root_dir":"/media/wz209/a29353b7-1090-433f-b452-b4ce827adb17/wz/PASI/all_data/patient",
   "batch_size": 32,
   "image_size": [224, 224],
-  "buffer_scale": 10,
+  "buffer_scale": 5,
   "pretrain_weights": false,
   "save_dir": "./checkpoint/baseline_resnet50",
   "epochs": 100
