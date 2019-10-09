@@ -73,7 +73,7 @@ class TargetDomainData:
 
         for line in open(self.txt_file, 'r'):
 
-            items = line.split()
+            items = line.split(',')
             self.img_paths.append(items[0])
             self.labels.append([float(elem) for elem in items[1:]])
 
