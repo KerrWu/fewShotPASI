@@ -22,11 +22,11 @@ print("begin\n{}".format(std_begin_time))
 
 train_txt_file = os.path.join(cfg.root_dir, cfg.train_txt_file)
 train_data = provider.TargetDomainData(train_txt_file, cfg.batch_size, cfg.image_size, cfg.buffer_scale,
-                                       is_train=True)
+                                       is_train=True).data
 
 valid_txt_file = os.path.join(cfg.root_dir, cfg.valid_txt_file)
 valid_data = provider.TargetDomainData(valid_txt_file, cfg.batch_size, cfg.image_size, cfg.buffer_scale,
-                                       is_train=False)
+                                       is_train=False).data
 
 model = network.baseline_backbone()
 
