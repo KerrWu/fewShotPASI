@@ -4,8 +4,8 @@ class baseline_backbone(K.Model):
 
     def  __init__(self):
         super(baseline_backbone, self).__init__()
-        self.global_avg_pool = K.GlobalAveragePooling2D()
-        self.dense = K.Dense(3)
+        self.global_avg_pool = K.layers.GlobalAveragePooling2D()
+        self.dense = K.layers.Dense(3)
         self.exp = K.activations.exponential()
 
     def call(self, inputs, name="resnet50", training=False):
