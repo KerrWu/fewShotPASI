@@ -1,11 +1,14 @@
 import os
 import time
+import random
 from utils import parse
 from data import provider
 from models import network
 import tensorflow as tf
 import tensorflow.keras as K
 
+tf.set_random_seed(512)
+random.seed(512)
 
 def lr_scheduler(epoch):
     if epoch < 10:
