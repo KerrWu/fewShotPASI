@@ -2,7 +2,7 @@
 import os
 import re
 import cv2
-import openpyxl
+# import openpyxl
 
 
 # 去掉空格
