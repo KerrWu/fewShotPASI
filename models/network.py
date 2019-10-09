@@ -6,7 +6,7 @@ class baseline_backbone(K.Model):
         super(baseline_backbone, self).__init__()
         self.global_avg_pool = K.layers.GlobalAveragePooling2D()
         self.dense = K.layers.Dense(3)
-        self.exp = K.activations.exponential()
+        self.output_act = K.layers.Activation(K.activations.exponential)
 
     def call(self, inputs, name="resnet50", training=False):
 
@@ -21,6 +21,6 @@ class baseline_backbone(K.Model):
 
         x = self.global_avg_pool(feature)
         x = self.dense(x)
-        score = self.exp(x)
+        score = self.output_act(x)
 
         return score
