@@ -21,9 +21,12 @@ begin_time = time.time()
 std_begin_time = time.strftime('%b-%d-%Y-%H:%M:%S', time.gmtime(begin_time))
 print("begin\n{}".format(std_begin_time))
 
-train_data = provider.TargetDomainData(cfg.train_txt_file, cfg.batch_size, cfg.image_size, cfg.buffer_scale,
+train_txt_file = os.path.join(cfg.root_dir, cfg.train_txt_file)
+train_data = provider.TargetDomainData(train_txt_file, cfg.batch_size, cfg.image_size, cfg.buffer_scale,
                                        is_train=True)
-valid_data = provider.TargetDomainData(cfg.valid_txt_file, cfg.batch_size, cfg.image_size, cfg.buffer_scale,
+
+valid_txt_file = os.path.join(cfg.root_dir, cfg.valid_txt_file)
+valid_data = provider.TargetDomainData(valid_txt_file, cfg.batch_size, cfg.image_size, cfg.buffer_scale,
                                        is_train=False)
 
 model = network.baseline_backbone()
