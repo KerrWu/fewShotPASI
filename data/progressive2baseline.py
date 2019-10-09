@@ -18,7 +18,7 @@ for dir_name in os.listdir(root_dir):
 
     for file in os.listdir(file_dir):
         #ret = os.system('identify -verbose ' + file_dir + file + ' | grep Interlace')
-        print(file_dir + file)
+        # print(file_dir + file)
         ret = os.popen('file ' + file_dir + file)
         lines = ret.readlines()
         if 'progressive,' in str(lines):
