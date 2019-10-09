@@ -31,7 +31,7 @@ valid_txt_file = os.path.join(cfg.root_dir, cfg.valid_txt_file)
 valid_data = provider.TargetDomainData(valid_txt_file, cfg.batch_size, cfg.image_size, cfg.buffer_scale,
                                        is_train=False, data_root_dir=cfg.data_root_dir).data
 
-model = network.baseline_backbone()
+model = network.baseline_backbone(image_size=cfg.image_size, backbone_name="resnet50", training=True).build_model()
 
 # load weight
 if os.path.isfile(cfg.pretrain_weights):
