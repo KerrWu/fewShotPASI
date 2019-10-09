@@ -75,7 +75,7 @@ class TargetDomainData:
 
             items = line.split(' ')
             self.img_paths.append(items[0])
-            self.labels.append(float(items[1]))
+            self.labels.append([float(elem) for elem in items[1:]])
 
     def __init__(self, txt_file, batch_size, image_size, buffer_scale=10, is_train=True):
 
