@@ -16,7 +16,7 @@ for dir_name in os.listdir(root_dir):
 
     file_dir = os.path.join(root_dir, dir_name)+'/'
 
-    for file in file_dir:
+    for file in os.listdir(file_dir):
         #ret = os.system('identify -verbose ' + file_dir + file + ' | grep Interlace')
         ret = os.popen('file ' + file_dir + file)
         lines = ret.readlines()
