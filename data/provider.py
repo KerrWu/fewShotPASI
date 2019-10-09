@@ -73,9 +73,9 @@ class TargetDomainData:
 
         for line in open(self.txt_file, 'r'):
 
-            items = line.split(' ')
+            items = line.split()
             self.img_paths.append(items[0])
-            self.labels.append([int(elem) for elem in items[1:]])
+            self.labels.append([float(elem) for elem in items[1:]])
 
     def __init__(self, txt_file, batch_size, image_size, buffer_scale=10, is_train=True):
 
@@ -96,7 +96,7 @@ class TargetDomainData:
 
         # 转换成Tensor
         self.img_paths = tf.convert_to_tensor(self.img_paths, dtype=tf.string)
-        self.labels = tf.convert_to_tensor(self.labels, dtype=tf.int32)
+        self.labels = tf.convert_to_tensor(self.labels, dtype=tf.float32)
 
         # 创建数据集
         data = tf.data.Dataset.from_tensor_slices((self.img_paths, self.labels))
