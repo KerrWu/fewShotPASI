@@ -141,6 +141,7 @@ with open("/Volumes/Seagate Backup Plus Drive/pasi/all_data/train_patients.txt",
                 body_part = body_part.group()
                 if patient in patient_dict and body_part in patient_dict[patient]:
                     f.write(os.path.join(patient, file)+',')
+
                     f.write(str(patient_dict[patient][body_part]['erythema'])+',')
                     f.write(str(patient_dict[patient][body_part]['scale']) + ',')
                     f.write(str(patient_dict[patient][body_part]['induration']) + '\n')
@@ -166,3 +167,10 @@ with open("/Volumes/Seagate Backup Plus Drive/pasi/all_data/valid_patients.txt",
                     f.write(str(patient_dict[patient][body_part]['induration']) + '\n')
 
 print(train_count, valid_count)
+#
+# for line in open("/Volumes/Seagate Backup Plus Drive/pasi/all_data/train_patients.txt", 'r'):
+#     try:
+#         items = line.split(',')
+#         items = [float(elem) for elem in items[1:]]
+#     except:
+#         print(line)
