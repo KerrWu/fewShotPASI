@@ -48,8 +48,8 @@ callbacks = [lr_callback, check_callback, tb_callback]
 
 # train model
 model.compile(optimizer="adam",
-              loss="mae",
-              metrics='mae')
+              loss=["mae", "mae", "mae"],
+              metrics=["mae", "mae", "mae"])
 
 model.fit(train_data, epochs=cfg.epochs, validation_data=valid_data, validation_freq=5, callbacks=callbacks)
 
