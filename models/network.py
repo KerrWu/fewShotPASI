@@ -1,3 +1,4 @@
+import tensorflow as tf
 import tensorflow.keras as K
 
 class baseline_backbone():
@@ -17,13 +18,13 @@ class baseline_backbone():
 
         self.global_avg_pool = K.layers.GlobalAveragePooling2D()
         self.dense = K.layers.Dense(3)
-        self.output_act = K.layers.Activation(K.activations.exponential)
+        # self.output_act = K.layers.Activation(K.activations.exponential)
 
     def build_model(self):
 
         feature = self.base_model.output
         x = self.global_avg_pool(feature)
         x = self.dense(x)
-        score = self.output_act(x)
+        score = tf.math.exp(x)
 
         return K.Model(inputs=self.base_model.input, outputs=score)
