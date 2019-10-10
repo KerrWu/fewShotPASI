@@ -40,7 +40,7 @@ if os.path.isfile(cfg.pretrain_weights):
 
 # callbacks
 tb_callback = K.callbacks.TensorBoard(log_dir='./logs/tensorboard', histogram_freq=128, batch_size=cfg.batch_size,
-                                      write_graph=False, write_grads=True, update_freq='batch')
+                                      write_graph=False, write_grads=True)
 check_callback = K.callbacks.ModelCheckpoint(filepath=cfg.save_dir, monitor='val_mae', verbose=0,
                                              save_weights_only=True)
 lr_callback = K.callbacks.LearningRateScheduler(lr_scheduler)
