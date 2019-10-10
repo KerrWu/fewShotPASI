@@ -8,6 +8,7 @@ from models import network
 import tensorflow as tf
 import tensorflow.keras as K
 
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 tf.set_random_seed(512)
 random.seed(512)
 
