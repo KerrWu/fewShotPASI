@@ -1,6 +1,7 @@
 import os
 import time
 import random
+import numpy as np
 from utils import parse
 from data import provider
 from models import network
@@ -15,7 +16,7 @@ def lr_scheduler(epoch):
     if epoch < 10:
         return 0.001
     else:
-        return 0.001 * tf.math.exp(0.1 * (10 - epoch))
+        return 0.001 * np.exp(0.1 * (10 - epoch))
 
 
 cfg_path = "./configs/baseline_resnet50.json"
@@ -54,7 +55,7 @@ model.compile(optimizer="adam",
               metrics=["mae"])
 
 model.fit(train_data, epochs=cfg.epochs, validation_data=valid_data, steps_per_epoch=cfg.train_num // cfg.batch_size,
-          validation_steps=cfg.valid_num // cfg.batch_size, callbacks = callbacks)
+          validation_steps=cfg.valid_num // cfg.batch_size, callbacks=callbacks)
 
 # save model
 if not os.path.isdir(cfg.save_dir):

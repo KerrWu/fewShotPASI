@@ -48,17 +48,36 @@ class meta_model():
 
         self.conv2d_1 = K.layers.Conv2d(filter=256, kernel_size=(3,3), strides=1, padding="same", activation='relu',
                                         kernel_initializer='he_normal', bias_initializer='zeros')
+
+        self.conv2d_2 = K.layers.Conv2d(filter=256, kernel_size=(3, 3), strides=1, padding="same", activation='relu',
+                                        kernel_initializer='he_normal', bias_initializer='zeros')
+
+        self.conv2d_3 = K.layers.Conv2d(filter=256, kernel_size=(3, 3), strides=1, padding="same", activation='relu',
+                                        kernel_initializer='he_normal', bias_initializer='zeros')
+
         self.global_avg_pool = K.layers.GlobalAveragePooling2D()
-        self.dense = K.layers.Dense(1)
+        self.dense = K.layers.Dense(1, kernel_initializer='he_uniform', activation='sigmoid', use_bias=False)
         # self.output_act = K.layers.Activation(K.activations.exponential)
 
     def build_model(self, mode):
 
         assert mode in ["source", "target"], "mode must be either 'source' or 'target'"
 
+        # source task - classification
         feature = self.base_model.output
         x = self.global_avg_pool(feature)
-        x = self.dense(x)
+        prob = self.dense(x)
+
+
+        # target task - PASI
+        for layer in self.base_model.layers:
+            layer.trainable = False
+
+
+
+        if mode == "source":
+            return K.model(input=self.base_model.input, output=prob)
+
 
 
 
