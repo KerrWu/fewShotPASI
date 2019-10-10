@@ -121,7 +121,7 @@ class TargetDomainData:
 
         distorted_image = tf.image.random_brightness(image, max_delta=63)
         distorted_image = tf.image.random_contrast(distorted_image, lower=0.5, upper=1.5)
-        distorted_image = tf.image.random_crop(distorted_image, [self.image_size[0], self.image_size[1], 3])
+        # distorted_image = tf.image.random_crop(distorted_image, [self.image_size[0], self.image_size[1], 3])
         distorted_image = tf.image.random_flip_left_right(distorted_image)
 
         return distorted_image
@@ -134,7 +134,7 @@ class TargetDomainData:
         img = tf.io.read_file(filename)
         img = tf.image.decode_jpeg(img, channels=3)
         img = tf.image.convert_image_dtype(img, dtype=tf.float32)
-
+        img = tf.image.resize_images(img, [self.image_size[0], self.image_size[1]])
         if self.is_train:
             img = self.augment_dataset(img, self.image_size)
 
