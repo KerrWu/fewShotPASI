@@ -110,7 +110,7 @@ class TargetDomainData:
         data = tf.data.Dataset.from_tensor_slices((self.img_paths, self.labels))
         print("data type=", type(data))
         data = data.map(self.parse_function)
-        # data = data.repeat(1000)
+        data = data.repeat(-1)
         data = data.shuffle(buffer_size=buffer_size)
 
         # 设置self data Batch
