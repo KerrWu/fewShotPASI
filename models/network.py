@@ -25,6 +25,6 @@ class baseline_backbone():
         feature = self.base_model.output
         x = self.global_avg_pool(feature)
         x = self.dense(x)
-        score = tf.math.exp(x)
+        # score = tf.math.exp(x)
 
-        return K.Model(inputs=self.base_model.input, outputs=score)
+        return K.Model(inputs=self.base_model.input, outputs=x)
