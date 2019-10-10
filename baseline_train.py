@@ -51,7 +51,7 @@ model.compile(optimizer="adam",
               loss="mae",
               metrics=["mae"])
 
-model.fit(train_data, epochs=cfg.epochs, validation_data=valid_data, validation_freq=5, callbacks=callbacks)
+model.fit(train_data, epochs=cfg.epochs, validation_data=valid_data, callbacks=callbacks)
 
 # save model
 if not os.path.isdir(cfg.save_dir):
