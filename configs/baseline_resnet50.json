@@ -8,7 +8,7 @@
   "buffer_scale": 5,
   "pretrain_weights": false,
   "save_dir": "./checkpoint/baseline_resnet50",
-  "epochs": 100,
+  "epochs": 200,
   "train_num": 3950,
-  "valid_num": 1071
+  "valid_num": 508
 }

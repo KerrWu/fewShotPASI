@@ -68,18 +68,12 @@ class meta_model():
         x = self.global_avg_pool(feature)
         prob = self.dense(x)
 
-
         # target task - PASI
         for layer in self.base_model.layers:
             layer.trainable = False
 
-
-
         if mode == "source":
             return K.model(input=self.base_model.input, output=prob)
-
-
-
 
         return K.Model(inputs=self.base_model.input, outputs=x)
 

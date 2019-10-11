@@ -43,9 +43,10 @@ if os.path.isfile(cfg.pretrain_weights):
     model.load_weights(cfg.pretrain_weights)
 
 # callbacks
-tb_callback = K.callbacks.TensorBoard(log_dir='./logs/tensorboard', histogram_freq=128, batch_size=cfg.batch_size,
+# histogram_freq: frequency in epoch
+tb_callback = K.callbacks.TensorBoard(log_dir='./logs/tensorboard', histogram_freq=1, batch_size=cfg.batch_size,
                                       write_graph=False, write_grads=True)
-check_callback = K.callbacks.ModelCheckpoint(filepath=cfg.save_dir, monitor='val_mae', verbose=0,
+check_callback = K.callbacks.ModelCheckpoint(filepath=cfg.save_dir, monitor='val_mae', verbose=1,
                                              save_weights_only=True)
 lr_callback = K.callbacks.LearningRateScheduler(lr_scheduler)
 callbacks = [lr_callback, check_callback, tb_callback]
@@ -62,7 +63,7 @@ model.fit(train_data, epochs=cfg.epochs, validation_data=valid_data, steps_per_e
 if not os.path.isdir(cfg.save_dir):
     os.mkdir(cfg.save_dir)
 
-save_path = os.path.join(cfg.save_dir, cfg.epochs + '.h5')
+save_path = os.path.join(cfg.save_dir, str(cfg.epochs) + '.h5')
 model.save_weights(filepath=save_path)
 
 end_time = time.time()
