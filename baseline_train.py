@@ -46,8 +46,8 @@ if os.path.isfile(cfg.pretrain_weights):
 # histogram_freq: frequency in epoch
 tb_callback = K.callbacks.TensorBoard(log_dir='./logs/tensorboard', histogram_freq=1, batch_size=cfg.batch_size,
                                       write_graph=False, write_grads=True)
-check_callback = K.callbacks.ModelCheckpoint(filepath=cfg.save_dir, monitor='val_mae', verbose=1,
-                                             save_weights_only=True)
+check_callback = K.callbacks.ModelCheckpoint(filepath=cfg.save_dir, monitor='val_mae', verbose=1, save_best_only=False,
+                                             save_weights_only=True, mode='min')
 lr_callback = K.callbacks.LearningRateScheduler(lr_scheduler)
 callbacks = [lr_callback, check_callback, tb_callback]
 
