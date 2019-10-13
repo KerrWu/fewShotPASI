@@ -51,13 +51,13 @@ class meta_model():
         self.dense_score = K.layers.Dense(3, kernel_initializer='he_uniform', use_bias=False, name="output_scores")
         # self.output_act = K.layers.Activation(K.activations.exponential)
 
-        self.conv2d_1 = K.layers.Conv2d(filter=256, kernel_size=(3, 3), strides=1, padding="same", activation='relu',
+        self.conv2d_1 = K.layers.Conv2D(filter=256, kernel_size=(3, 3), strides=1, padding="same", activation='relu',
                                         kernel_initializer='he_normal', bias_initializer='zeros')
 
-        self.conv2d_2 = K.layers.Conv2d(filter=256, kernel_size=(3, 3), strides=1, padding="same", activation='relu',
+        self.conv2d_2 = K.layers.Conv2D(filter=256, kernel_size=(3, 3), strides=1, padding="same", activation='relu',
                                         kernel_initializer='he_normal', bias_initializer='zeros')
 
-        self.conv2d_3 = K.layers.Conv2d(filter=256, kernel_size=(3, 3), strides=1, padding="same", activation='relu',
+        self.conv2d_3 = K.layers.Conv2D(filter=256, kernel_size=(3, 3), strides=1, padding="same", activation='relu',
                                         kernel_initializer='he_normal', bias_initializer='zeros')
 
     def build_model(self, mode, meta_weights=None):
