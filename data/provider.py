@@ -173,8 +173,8 @@ class TargetDomainData:
 
 
 if __name__ == "__main__":
-    pos_txt_file = "/media/wz209/a29353b7-1090-433f-b452-b4ce827adb17/wz/PASI/all_data/source_data/pos_txt"
-    neg_txt_file = "/media/wz209/a29353b7-1090-433f-b452-b4ce827adb17/wz/PASI/all_data/source_data/neg_txt"
+    pos_txt_file = "/media/wz209/a29353b7-1090-433f-b452-b4ce827adb17/wz/PASI/all_data/source_data/pos.txt"
+    neg_txt_file = "/media/wz209/a29353b7-1090-433f-b452-b4ce827adb17/wz/PASI/all_data/source_data/neg.txt"
     batch_size = 16
     image_size = (224, 224)
 
