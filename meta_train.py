@@ -61,6 +61,8 @@ model.compile(optimizer="adam",
               loss={"embedding":deep_metric_loss, "output_prob":K.losses.binary_crossentropy},
               metrics={"output_prob":K.metrics.binary_accuracy})
 
+print(train_data)
+print(valid_data)
 model.fit(train_data, epochs=cfg.epochs, validation_data=valid_data, steps_per_epoch=cfg.train_pos_num // cfg.batch_size,
           validation_steps=cfg.valid_pos_num // cfg.batch_size, callbacks=callbacks)
 
