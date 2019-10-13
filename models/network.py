@@ -8,7 +8,7 @@ class baseline_backbone():
         input_tensor = K.Input(shape=(image_size[0], image_size[1], 3))
 
         if backbone_name == "resnet50":
-            self.base_model = K.applications.ResNet50(input_tensor=input_tensor, weights='imagenet', include_top=False)
+            self.base_model = K.applications.ResNet50(input_tensor=input_tensor, weights=None, include_top=False)
         elif backbone_name == "dense101":
             self.base_model = K.applications.DenseNet121(input_tensor=input_tensor, weights='imagenet',
                                                          include_top=False)
