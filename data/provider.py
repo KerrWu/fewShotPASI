@@ -1,4 +1,5 @@
 import os
+import numpy as np
 import tensorflow as tf
 
 
@@ -71,7 +72,7 @@ class SourceDomainData:
 
     def double_label(self, filename_batch, label_batch):
 
-        return filename_batch, label_batch, label_batch
+        return filename_batch, np.array([label_batch, label_batch])
 
     def augment_dataset(self, image, size):
 
