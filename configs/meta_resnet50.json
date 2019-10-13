@@ -1,0 +1,16 @@
+{
+  "train_txt_file": "train_patients.txt",
+  "valid_txt_file": "valid_patients.txt",
+  "root_dir":"/media/wz209/a29353b7-1090-433f-b452-b4ce827adb17/wz/PASI/fewShotPASI",
+  "data_root_dir":"/media/wz209/a29353b7-1090-433f-b452-b4ce827adb17/wz/PASI/all_data/patient",
+  "batch_size": 32,
+  "image_size": [224, 224],
+  "buffer_scale": 5,
+  "pretrain_weights": false,
+  "save_dir": "./checkpoint/baseline_resnet50",
+  "backbone_name": "resnet50",
+  "mode": "source",
+  "epochs": 200,
+  "train_num": 3950,
+  "valid_num": 508
+}
