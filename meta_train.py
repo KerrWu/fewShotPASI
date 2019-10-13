@@ -59,7 +59,7 @@ callbacks = [lr_callback, check_callback, tb_callback]
 # train model
 model.compile(optimizer="adam",
               loss={"embedding":deep_metric_loss, "output_prob":K.losses.binary_crossentropy},
-              metrics={"embedding":None, "output_prob":K.metrics.binary_accuracy})
+              metrics={"output_prob":K.metrics.binary_accuracy})
 
 model.fit(train_data, epochs=cfg.epochs, validation_data=valid_data, steps_per_epoch=cfg.train_pos_num // cfg.batch_size,
           validation_steps=cfg.valid_pos_num // cfg.batch_size, callbacks=callbacks)
