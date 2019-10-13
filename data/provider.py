@@ -87,7 +87,7 @@ class SourceDomainData:
         img = tf.image.convert_image_dtype(img, dtype=tf.float32)
         img = self.augment_dataset(img, self.image_size)
 
-        return img, label
+        return img, [label, label]
 
 
 class TargetDomainData:
