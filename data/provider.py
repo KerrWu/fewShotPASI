@@ -9,18 +9,13 @@ class SourceDomainData:
         labels = []
 
         for line in open(txt_file, 'r'):
-            items = line.split(',')
-            img_paths.append(items[0])
-            labels.append(items[1])
-
-        for line in open(txt_file, 'r'):
             try:
-                items = line.split(',')
+                items = line.strip().split(',')
                 if self.data_root_dir:
                     img_paths.append(os.path.join(self.data_root_dir, items[0]))
                 else:
                     img_paths.append(items[0])
-                labels.append([float(elem) for elem in items[1:]])
+                labels.append(int(items[1]))
             except:
                 print(line)
                 raise ValueError
@@ -101,7 +96,7 @@ class TargetDomainData:
 
         for line in open(self.txt_file, 'r'):
             try:
-                items = line.split(',')
+                items = line.strip().split(',')
                 if self.data_root_dir:
                     self.img_paths.append(os.path.join(self.data_root_dir, items[0]))
                 else:
@@ -177,6 +172,7 @@ if __name__ == "__main__":
     neg_txt_file = "/media/wz209/a29353b7-1090-433f-b452-b4ce827adb17/wz/PASI/all_data/source_data/neg.txt"
     batch_size = 16
     image_size = (224, 224)
+    data_root_dir = "/media/wz209/a29353b7-1090-433f-b452-b4ce827adb17/wz/PASI/all_data/source_data"
 
-    tmp = SourceDomainData(pos_txt_file, neg_txt_file, batch_size, image_size)
+    tmp = SourceDomainData(pos_txt_file, neg_txt_file, batch_size, image_size, data_root_dir=data_root_dir)
     print(tmp.data)
