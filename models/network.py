@@ -45,7 +45,7 @@ class meta_model():
         else:
             raise NotImplementedError
 
-        self.global_avg_pool = K.layers.GlobalAveragePooling2D()
+        self.global_avg_pool = K.layers.GlobalAveragePooling2D(name="embedding")
         self.dense_prob = K.layers.Dense(1, kernel_initializer='he_uniform', activation='sigmoid', use_bias=False,
                                          name="output_prob")
         self.dense_score = K.layers.Dense(3, kernel_initializer='he_uniform', use_bias=False, name="output_scores")
