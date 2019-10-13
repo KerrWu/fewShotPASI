@@ -179,4 +179,4 @@ if __name__ == "__main__":
     image_size = (224, 224)
 
     tmp = SourceDomainData(pos_txt_file, neg_txt_file, batch_size, image_size)
-    print(temp.data)
+    print(tmp.data)
