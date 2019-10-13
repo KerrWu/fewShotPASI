@@ -70,7 +70,7 @@ class meta_model():
             embedding = self.global_avg_pool(feature)
             prob = self.dense_prob(embedding)
 
-            return K.models.Model(inputs=self.base_model.input, output=[embedding, prob])
+            return K.models.Model(inputs=self.base_model.input, outputs=[embedding, prob])
 
         # target task - PASI
         if mode == 'target':
@@ -81,7 +81,7 @@ class meta_model():
             embedding = self.global_avg_pool(feature)
             prob = self.dense_prob(embedding)
 
-            meta_model = K.models.Model(inputs=self.base_model.input, output=[feature, prob])
+            meta_model = K.models.Model(inputs=self.base_model.input, outputs=[feature, prob])
             meta_model.load_weights(meta_weights)
 
             for layer in meta_model.layers:
