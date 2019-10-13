@@ -81,7 +81,7 @@ class meta_model():
             embedding = self.global_avg_pool(feature)
             prob = self.dense_prob(embedding)
 
-            meta_model = K.model(input=self.base_model.input, output=[feature, prob])
+            meta_model = K.Model(inputs=self.base_model.input, output=[feature, prob])
             meta_model.load_weights(meta_weights)
 
             for layer in meta_model.layers:
