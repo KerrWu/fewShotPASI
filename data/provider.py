@@ -8,26 +8,26 @@ class SourceDomainData:
         img_paths = []
         labels = []
 
-        for line in open(txt_file, 'r'):
-            try:
-                items = line.strip().split(',')
-                if self.data_root_dir:
-                    img_paths.append(os.path.join(self.data_root_dir, items[0]))
-                else:
-                    img_paths.append(items[0])
-                labels.append(int(items[1]))
-            except:
-                print(line, items)
-                raise ValueError
-
         # for line in open(txt_file, 'r'):
-        #     items = line.strip().split(',')
-        #     print(items)
-        #     if self.data_root_dir:
-        #         img_paths.append(os.path.join(self.data_root_dir, items[0]))
-        #     else:
-        #         img_paths.append(items[0])
-        #     labels.append(int(items[1]))
+        #     try:
+        #         items = line.strip().split(',')
+        #         if self.data_root_dir:
+        #             img_paths.append(os.path.join(self.data_root_dir, items[0]))
+        #         else:
+        #             img_paths.append(items[0])
+        #         labels.append(int(items[1]))
+        #     except:
+        #         print(line, items)
+        #         raise ValueError
+
+        for line in open(txt_file, 'r'):
+            items = line.strip().split(',')
+            print(items)
+            if self.data_root_dir:
+                img_paths.append(os.path.join(self.data_root_dir, items[0]))
+            else:
+                img_paths.append(items[0])
+            labels.append(int(items[1]))
 
 
         return img_paths, labels
