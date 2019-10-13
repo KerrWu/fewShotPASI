@@ -52,21 +52,21 @@ class SourceDomainData:
         self.neg_img_paths = tf.convert_to_tensor(self.neg_img_paths, dtype=tf.string)
 
         # 创建数据集
-        pos_data = tf.data.Dataset.from_tensor_slices((self.pos_img_paths, self.pos_labels))
+        pos_data = tf.data.Dataset.from_tensor_slices((self.pos_img_paths, [self.pos_labels, self.pos_labels]))
         print("data type=", type(pos_data))
         pos_data = pos_data.map(self.parse_function)
         pos_data = pos_data.repeat(-1)
         pos_data = pos_data.shuffle(buffer_size=buffer_size//2)
         pos_data = pos_data.batch(batch_size//2)
 
-        neg_data = tf.data.Dataset.from_tensor_slices((self.neg_img_paths, self.neg_labels))
+        neg_data = tf.data.Dataset.from_tensor_slices((self.neg_img_paths, [self.neg_labels, self.neg_labels]))
         print("data type=", type(neg_data))
         neg_data = neg_data.map(self.parse_function)
         neg_data = neg_data.repeat(-1)
         neg_data = neg_data.shuffle(buffer_size=buffer_size//2)
         neg_data = neg_data.batch(batch_size//2)
 
-        self.data =  neg_data.concatenate(pos_data)
+        self.data = neg_data.concatenate(pos_data)
 
     def augment_dataset(self, image, size):
 
@@ -87,7 +87,7 @@ class SourceDomainData:
         img = tf.image.convert_image_dtype(img, dtype=tf.float32)
         img = self.augment_dataset(img, self.image_size)
 
-        return img, [[label], [label]]
+        return img, label
 
 
 class TargetDomainData:
