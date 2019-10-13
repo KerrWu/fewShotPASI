@@ -17,7 +17,7 @@ class SourceDomainData:
                     img_paths.append(items[0])
                 labels.append(int(items[1]))
             except:
-                print(items)
+                print(line, items)
                 raise ValueError
 
         # for line in open(txt_file, 'r'):
