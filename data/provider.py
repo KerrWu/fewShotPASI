@@ -68,6 +68,11 @@ class SourceDomainData:
         neg_data = neg_data.batch(batch_size//2)
 
         self.data = neg_data.concatenate(pos_data)
+        self.data = self.data.map(self.double_label)
+
+    def double_label(self, filename_batch, label_batch):
+        
+        return filename_batch, [label_batch, label_batch]
 
     def augment_dataset(self, image, size):
 
